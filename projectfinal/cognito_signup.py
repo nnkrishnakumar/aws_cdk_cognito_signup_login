@@ -64,6 +64,29 @@ def verify_email(username, verification_code):
         print('Error verifying email:', e)
 
 
+# import argparse
+
+# def main():
+#     parser = argparse.ArgumentParser(description='Process username and password.')
+
+#     # Add arguments for username and password
+#     parser.add_argument('-u', '--username', type=str, help='Username for authentication')
+#     parser.add_argument('-p', '--password', type=str, help='Password for authentication')
+
+#     args = parser.parse_args()
+
+#     # Check if both username and password are provided
+#     if args.username and args.password:
+#         print("Username:", args.username)
+#         print("Password:", args.password)
+#         username=args.username
+#         password=args.password
+#         log_in(username,password)
+#     else:
+#         print("Please provide both username and password.")
+
+# if __name__ == "__main__":
+#     main()
 import argparse
 
 def main():
@@ -79,9 +102,13 @@ def main():
     if args.username and args.password:
         print("Username:", args.username)
         print("Password:", args.password)
-        username=args.username
-        password=args.password
-        log_in(username,password)
+        username = args.username
+        password = args.password
+        jwt_token = log_in(username, password)  # Get the JWT token
+        if jwt_token:
+            print("JWT Token:", jwt_token)
+        else:
+            print("Login failed. Please check your credentials.")
     else:
         print("Please provide both username and password.")
 
